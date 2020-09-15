@@ -1,0 +1,7 @@
+public static boolean isUnique(String s){
+	    	if(s.length()==0) return true;
+	    	Set<Character> set=new HashSet<>();
+	    	for(char c:s.toCharArray()) set.add(c);
+	    	if(set.size()==s.length()) return true;
+	    	return false;
+	    }
