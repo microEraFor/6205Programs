@@ -1,0 +1,48 @@
+public ListNode partition(ListNode head, int x) {
+        if(head==null) return null;
+        if(head.next==null) return head;
+
+        ListNode ahead=head;
+        ListNode smaller=null;
+        ListNode bigger=null;
+        ListNode smallT=smaller;
+        ListNode biggerT=bigger;
+
+        while(ahead!=null){
+            if(ahead.val<x){
+                //addTail(smallT,ahead.val);
+                
+                if(smallT==null){
+                    smaller=new ListNode(ahead.val);
+                    smallT=smaller;
+                }else{
+                    smallT.next=new ListNode(ahead.val);
+                    smallT=smallT.next;
+                }
+
+            }else{
+                //addTail(biggerT,ahead.val);
+                
+                if(biggerT==null){
+                    bigger=new ListNode(ahead.val);
+                    biggerT=bigger;
+                }
+                else{
+                    biggerT.next=new ListNode(ahead.val);
+                    biggerT=biggerT.next;
+                }
+            	                
+            } 
+            ahead=ahead.next;     
+        }
+
+        //ListNode t=smaller;
+        if(smaller==null) return bigger;
+        if(bigger==null) return smaller;
+        //while(t.next!=null){
+        //    t=t.next;
+        //}
+        smallT.next=bigger;
+        return smaller;
+        
+    }
